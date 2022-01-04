@@ -10,8 +10,9 @@ df=pd.DataFrame(columns=cols)
     
     
 def main():
-    createCsv()
-    df.to_csv("res.csv")
+    # createCsv()
+    # df.to_csv("res.csv")
+    at = pd.read_csv("res.csv")
 
    
 domain = "http://www.olympedia.org"
