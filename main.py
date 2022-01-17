@@ -107,12 +107,9 @@ def getEventDeatails(link, season, city, eventName,compettionYear):
                       medal = numpy.nan
                   try:    
                     getCompettorData(compettorLink, season, city, eventName, compettorName, pos, medal,compettionYear)
-                    global df
-                    df.to_csv("res.csv")
-
 
                   except Exception as e:
-                      print(e)
+                    print(e)
 
 
 
