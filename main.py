@@ -34,8 +34,9 @@ def createCsv():
 
 # first page
 def findCompettionNameAndLink(olympicType, season):
-    for tr in olympicType.findAll("tr"):
-        td = tr.find("td")
+    trs = olympicType.findAll("tr")
+    for i in range(13,len(trs)) :
+        td = trs[i].find("td")
         str1 = " "
         city = str1.join(td.text.split()[0:len(td.text.split()) -1])
         compettionYear = td.text.split()[len(td.text.split())-1]
@@ -116,8 +117,10 @@ def getEventDeatails(link, season, city, eventName,compettionYear):
 def findIndexOfCDetails(tr):
     ths = tr.findAll("th")
     indexOfName = 0
+    CompetatorOptions = ["Competitor(s)","Player","Athlete", "Swimmer","Judoka", "Gymnast", "Archer","Fighter","Lifter","Boxer", "Shooter", "Triathlete", "Boat"]
     for i in range(0,len(ths)):
-        if ths[i].text == "Competitor(s)" or ths[i].text == "Player" or ths[i].text == "Athlete" or ths[i].text == "Swimmer" or ths[i].text == "Judoka" or ths[i].text == "Gymnast":
+        if ths[i].text in  CompetatorOptions:
+    
             return i    
     return numpy.nan
 
@@ -139,7 +142,7 @@ def getCompettorData(link, season, city, eventName, compettorName, pos, medal,co
         if tr.find("th").text == "Sex":
             sex = tr.find("td").text
         if tr.find("th").text == "NOC":
-            noc = tr.find("td").text
+            noc = tr.find("td").text[1:]
         if tr.find("th").text == "Measurements":
             measurements = tr.find("td").text
             if "/" in measurements:
@@ -157,7 +160,6 @@ def getCompettorData(link, season, city, eventName, compettorName, pos, medal,co
     dataFrame2 = pd.DataFrame(newEntry,columns=cols)
     global df
     df = df.append(dataFrame2)
-    sleep(1)
       
 if __name__ == "__main__":
     
