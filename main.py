@@ -117,7 +117,10 @@ def getEventDeatails(link, season, city, eventName,compettionYear):
 def findIndexOfCDetails(tr):
     ths = tr.findAll("th")
     indexOfName = 0
-    CompetatorOptions = ["Competitor(s)","Player","Athlete", "Swimmer","Judoka", "Gymnast", "Archer","Fighter","Lifter","Boxer", "Shooter", "Triathlete", "Boat"]
+    CompetatorOptions = ["Competitor(s)","Player","Athlete", "Swimmer","Judoka", "Gymnast", "Archer","Fighter","Lifter",
+                         "Boxer", "Shooter", "Triathlete", "Boat","Surfer","Climber",
+                         "Skater","Pentathlete","Karateka","Fencers","Diver","Cyclist",
+                         "Wrestler","Rider"]
     for i in range(0,len(ths)):
         if ths[i].text in  CompetatorOptions:
     
