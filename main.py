@@ -14,7 +14,6 @@ df=pd.DataFrame(columns=cols)
 def main():
     createCsv()
     df.to_csv("res.csv")
-    # at = pd.read_csv("res.csv")
 
    
 domain = "http://www.olympedia.org"
@@ -54,6 +53,16 @@ def getEvent(link, season, city, compettionYear):
     soup = BeautifulSoup(response.content, "html.parser")
     container = soup.find("div", attrs={"class": "container"})
     table = container.find("table", attrs={"class": "table"})
+    trs = table.findAll("tr", attrs={"class": "even"})
+    for tr in trs: 
+        a = tr.find("td").a
+        eventName = a.text
+        link = domain + a['href']
+        try:    
+            getEventDeatails(link, season, city, eventName, compettionYear)
+            df.to_csv("res.csv")
+        except Exception as e:
+            print(e)
     trs = table.findAll("tr", attrs={"class": "odd"})
     for tr in trs: 
         a = tr.find("td").a
@@ -61,16 +70,12 @@ def getEvent(link, season, city, compettionYear):
         link = domain + a['href']
         try:    
             getEventDeatails(link, season, city, eventName, compettionYear)
+            df.to_csv("res.csv")
+
         except Exception as e:
             print(e)
+
             
-    trs = table.findAll("tr", attrs={"class": "even"})
-    for tr in trs: 
-        a = tr.find("td").a
-        eventName = a.text
-        newLink = domain + a['href']
-        getEventDeatails(link, season, city, eventName,compettionYear)
-      
 # third page
 def getEventDeatails(link, season, city, eventName,compettionYear):
     response = requests.get(link)
@@ -111,7 +116,6 @@ def getEventDeatails(link, season, city, eventName,compettionYear):
 
                   except Exception as e:
                     print(e)
-
 
 
 def findIndexOfCDetails(tr):
