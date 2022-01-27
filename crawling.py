@@ -35,7 +35,7 @@ def findCompettionNameAndLink(olympicType, season):
     #  trs of all the olympics
     trs = olympicType.findAll("tr")
     # we only intrested in olympics from 1960 
-    for i in range(len(trs)-1,len(trs)):
+    for i in range(13,len(trs)):
         td = trs[i].find("td")
         # spliting the compettion name into the city and year 
         str1 = " "
