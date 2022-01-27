@@ -1,6 +1,8 @@
 # Welcome to the Olympic Games Analysis
 ### By Ezra Tameno Gal Cohen and Anat Pitimson - Holon Institute of Technology
 
+![Olympic_rings_without_rims svg (1)](https://user-images.githubusercontent.com/88483910/151405709-bd9305fc-060a-4ec3-a2e7-d67fec3e2ff2.png)
+
 # A little Background
 ### The Olympic Games are a major international multi-sport event normally held once every four years. 
 #### In this project we will show the data we collected about the Olympics from 1960 to 2020.
